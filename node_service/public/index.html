@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>OrderFlow — Realtime Orders</title>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="brand">
+        <span class="logo">📦</span>
+        <div>
+          <h1>Orders</h1>
+          <p>Order Management</p>
+        </div>
+      </div>
+      <div class="searchbar">
+        <input id="q" placeholder="Искать по ID, имени, email, городу..." />
+        <button id="btnSearch">Search</button>
+        <button id="btnClear">Clear</button>
+        <button id="btnAll">View All</button>
+        <button id="btnRandom">Random</button>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="meta">
+        <span id="total"></span>
+        <span id="updated"></span>
+      </div>
+      <div class="sorter">
+        <label>Sort:</label>
+        <select id="sort">
+          <option value="date_created">Date</option>
+          <option value="customer">Customer</option>
+          <option value="total">Amount</option>
+        </select>
+        <select id="dir">
+          <option value="desc">Desc</option>
+          <option value="asc">Asc</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="list" id="list"></section>
+
+    <footer class="pager">
+      <button id="prev">Prev</button>
+      <span id="page">1</span>
+      <button id="next">Next</button>
+    </footer>
+  </div>
+
+  <dialog id="dlg"><article id="card"></article><form method="dialog"><button>Close</button></form></dialog>
+  <script src="/main.js"></script>
+</body>
+</html>

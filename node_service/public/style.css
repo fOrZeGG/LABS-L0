@@ -1,0 +1,64 @@
+:root{--bg1:#7c3aed;--bg2:#f43f5e;--panel:#fff;--text:#1e2430;--muted:#6b7280;--chip:#eef2ff;--chipb:#c7d2fe}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Inter,Segoe UI,Roboto,system-ui,Arial,sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));min-height:100%}
+.shell{max-width:980px;margin:24px auto;padding:0 16px}
+.hero{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);border-radius:16px;padding:14px 16px;color:#fff}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{font-size:28px}
+.hero h1{margin:0;font-size:22px}
+.hero p{margin:0;opacity:.9}
+.searchbar{display:flex;gap:8px}
+.searchbar input{padding:10px 12px;border-radius:12px;border:0;min-width:360px}
+.searchbar button{padding:10px 12px;border:0;border-radius:12px;background:#fff;color:#333;cursor:pointer}
+.toolbar{margin:14px 0;display:flex;justify-content:space-between;align-items:center;color:#fff}
+.list{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--panel);border-radius:14px;padding:14px;border:1px solid #e5e7eb}
+.card h3{margin:0 0 6px 0;font-size:16px}
+.row{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.badge{padding:4px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--chipb);font-size:12px}
+.pager{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin:12px 0}
+.pager button{padding:8px 10px;border:0;border-radius:10px;background:#fff;cursor:pointer}
+/* когда открыта модалка — фон не двигается и второй скролл пропадает */
+body.modal-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* модалка во вьюпорте, страница не скроллится */
+dialog{
+  position: fixed;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 980px;
+  width: min(92vw, 980px);
+  max-height: 90vh;
+  border: 0;
+  border-radius: 16px;
+  padding: 0;
+  overflow: hidden;      /* скролл только внутри article */
+}
+dialog::backdrop { background: rgba(0,0,0,.35); }
+
+/* ЕДИНСТВЕННЫЙ вертикальный скролл — тут */
+dialog article{
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  background: #fff;
+  color: #111;
+  font-size: 14px;
+}
+
+/* JSON не должен создавать ещё один "главный" скролл */
+pre{
+  overflow: auto;       /* локальная прокрутка JSON-а */
+  max-height: 55vh;     /* чтобы не распирал модалку */
+}
+
+dialog h2{margin:0 0 10px 0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kv{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:10px}
+.kv h4{margin:0 0 6px 0;font-size:12px;color:#6b7280;text-transform:uppercase;letter-spacing:.06em}
+pre{background:#0b1220;color:#d1e6ff;border-radius:10px;padding:12px;overflow:auto}
