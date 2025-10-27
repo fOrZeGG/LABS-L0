@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FlowTrack</title>
+  <link rel="stylesheet" href="/web/app.css">
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="box">📦</div>
+      <div class="title">
+        <strong>FlowTrack</strong>
+        <span>Realtime Orders</span>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Навигация">
+      <a href="#/search" class="tab" data-route="search" role="tab" aria-selected="true">Поиск</a>
+      <a href="#/list" class="tab" data-route="list" role="tab">Все заказы</a>
+      <a href="#/about" class="tab" data-route="about" role="tab">О сервисе</a>
+    </nav>
+  </header>
+
+  <!-- Pages -->
+  <main id="app" class="app">
+    <!-- SEARCH PAGE -->
+    <section id="page-search" class="page visible" data-page="search">
+      <div class="card hero">
+        <h1>Найдите заказ</h1>
+        <p class="muted">Введите <code>order_uid</code> (например: <kbd>b563…test</kbd>) и нажмите «Найти».</p>
+        <form id="search-form" autocomplete="off" class="search">
+          <input id="search-input" type="text" inputmode="latin" placeholder="Например: b563feb7b2b84b6test" aria-label="Идентификатор заказа">
+          <button type="submit" class="btn primary">Найти</button>
+          <button type="button" id="clear-btn" class="btn">Очистить</button>
+        </form>
+        <div class="quick-row">
+          <button class="chip" data-example="b563feb7b2b84b6test">Популярный ID</button>
+          <button class="chip" id="view-all">Показать все</button>
+          <button class="chip" id="random-one">Случайный</button>
+        </div>
+      </div>
+
+      <div id="list-preview" class="card list-card" hidden>
+        <div class="list-head">
+          <strong>Последние заказы</strong>
+          <span id="list-count" class="muted"></span>
+        </div>
+        <ul id="orders-ul" class="orders"></ul>
+      </div>
+    </section>
+
+    <!-- ORDER PAGE -->
+    <section id="page-order" class="page" data-page="order">
+      <div class="card order-head">
+        <div>
+          <h2 id="ord-title">Заказ</h2>
+          <div class="meta">
+            <span id="ord-track" class="tag">TRK</span>
+            <span id="ord-entry" class="tag">ENTRY</span>
+            <span id="ord-date" class="tag">DATE</span>
+          </div>
+        </div>
+        <div class="price-badge">
+          <span id="ord-amount">$0.00</span>
+          <em id="ord-state" class="state">PENDING</em>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Order Overview</h3>
+          <div class="fields" id="block-overview"></div>
+        </div>
+        <div class="card">
+          <h3>Delivery</h3>
+          <div class="fields" id="block-delivery"></div>
+        </div>
+        <div class="card">
+          <h3>Payment</h3>
+          <div class="fields" id="block-payment"></div>
+        </div>
+        <div class="card">
+          <h3>Items</h3>
+          <div id="items-wrap"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="page-about" class="page" data-page="about">
+      <div class="card">
+        <h2>О сервисе</h2>
+        <p class="muted">Демо: подписка на NATS Streaming, сохранение в PostgreSQL, кэш в памяти, UI без фреймворков.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="/web/app.js"></script>
+</body>
+</html>
